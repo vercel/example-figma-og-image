@@ -1,113 +1,122 @@
-import Image from 'next/image'
+import Image from "next/image";
+import { Form } from "@/app/form";
 
-export default function Home() {
+export default function Home({
+  searchParams = {
+    title: "A dynamic OG Image",
+    description: "Created using a few lines of code",
+  },
+}: {
+  searchParams: { [key: string]: string };
+}) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <main className="mx-auto max-w-xl py-32 px-2 flex flex-col gap-10">
+      <hgroup className="flex flex-col gap-4">
+        <h1 className="text-3xl font-semibold text-gray-800">
+          Figma to OG Image
+        </h1>
+        <p>
+          Use a Figma design instead of writing JSX to generate dynamic OG
+          images for your Next.js apps.
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </hgroup>
+
+      <section className="flex flex-col gap-8">
+        <div className="relative aspect-video">
+          <div
+            className="absolute inset-0 bg-gray-200 animate-pulse grid place-items-center"
+            aria-hidden
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            Generating OG image...
+          </div>
+          <Image
+            key={`/image?${new URLSearchParams(searchParams).toString()}`}
+            src={`/image?${new URLSearchParams(searchParams).toString()}`}
+            alt={`A example of a Figma design being used as a OG image.`}
+            fill
+          />
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <Form searchParams={searchParams} />
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <section className=" text-gray-700">
+        <h2 className="text-2xl font-semibold text-gray-800 mt-12 mb-4">
+          Getting Started
+        </h2>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <Header>Installation</Header>
+        <p className="">
+          <span className="code">experimental_FigmaImageResponse</span> is
+          included in <span className="code">next.js</span>. You will need at
+          least version <span className="code">next@14.0.5-canary.35</span>.
+        </p>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        <Header>Usage</Header>
+        <code>
+          {highlightedCode`import { ${"experimental_FigmaImageResponse"} } from ${"'next/og'"}\n\nexport default async function Image() {\n  ${"return experimental_FigmaImageResponse({"}\n    ${'url: "https://figma.com/file/...",'}\n    ${"template: {"}\n      ${`title: \"${searchParams.title}\",`}\n      ${`description: \"${searchParams.description}\"`}\n    ${"}"}\n  ${"})"}\n}`}
+        </code>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <Header>Links</Header>
+        <ul className="list-disc text-base ml-[14px] underline text-gray-700 underline-offset-2">
+          <li>
+            <a
+              href="https://vercel.com/docs/functions/edge-functions/og-image-generation/og-image-examples#using-figma---experimental"
+              target="_blank"
+            >
+              Documentation
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/vercel/next.js/issues/new?assignees=&labels=template%3A+bug&projects=&template=1.bug_report.yml"
+              target="_blank"
+            >
+              Feedback
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.figma.com/file/muVsFH50Ddm45BGtFKEdG5/FigmaImageResponse-Demo?type=design&node-id=1-60&mode=design&t=6Gu0LgySl1y0jWNH-0"
+              target="_blank"
+            >
+              Example Figma Design
+            </a>
+          </li>
+        </ul>
+      </section>
     </main>
-  )
+  );
+}
+
+const Header = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <h3 className="mt-10 mb-2 font-medium text-gray-700 text-sm">{children}</h3>
+  );
+};
+
+// Thanks Shu https://github.com/shuding/react-wrap-balancer/blob/1bd9b5100d0f47c9710a9d8b49bc011aa44d8d77/website/src/sections/GettingStarted.tsx#L27
+function highlightedCode(
+  fades: TemplateStringsArray,
+  ...highlighted: string[]
+) {
+  const elements: JSX.Element[] = [];
+  let i = 0;
+
+  for (const fade of fades) {
+    elements.push(
+      <span key={i++} className="hl-fade">
+        {fade}
+      </span>
+    );
+    if (highlighted.length) {
+      elements.push(
+        <span key={i++} className="hl-highlighted">
+          {highlighted.shift()}
+        </span>
+      );
+    }
+  }
+
+  return elements;
 }
