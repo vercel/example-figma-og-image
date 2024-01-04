@@ -81,6 +81,19 @@ export default function Home({
           .
         </p>
 
+        <Header>Design</Header>
+        <p>
+          Design your OG image in Figma. This website is using this{" "}
+          <a
+            href="https://www.figma.com/file/muVsFH50Ddm45BGtFKEdG5/FigmaImageResponse-Demo?type=design&node-id=1-60&mode=design&t=OPmzvOPfCgO0cLSp-0"
+            target="_blank"
+            className="underline"
+          >
+            Figma design
+          </a>
+          .
+        </p>
+
         <Header>Usage</Header>
         <code>
           {highlightedCode`import { ${"experimental_FigmaImageResponse"} } from ${"'next/og'"}\n\nexport default async function Image() {\n  ${"return experimental_FigmaImageResponse({"}\n    ${'url: "https://figma.com/file/...",'}\n    ${"template: {"}\n      ${`title: \"${searchParams.title}\",`}\n      ${`description: \"${searchParams.description}\"`}\n    ${"}"}\n  ${"})"}\n}`}
