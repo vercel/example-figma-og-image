@@ -1,5 +1,13 @@
 import Image from "next/image";
 import { Form } from "@/app/form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home({
   searchParams = {
@@ -21,24 +29,33 @@ export default function Home({
         </p>
       </hgroup>
 
-      <section className="flex flex-col gap-8">
-        <div className="relative aspect-video">
-          <div
-            className="absolute inset-0 bg-gray-200 animate-pulse grid place-items-center"
-            aria-hidden
-          >
-            Generating OG image...
-          </div>
-          <Image
-            key={`/image?${new URLSearchParams(searchParams).toString()}`}
-            src={`/image?${new URLSearchParams(searchParams).toString()}`}
-            alt={`A example of a Figma design being used as a OG image.`}
-            fill
-          />
-        </div>
+      <Card
+        style={{
+          boxShadow:
+            "0 20px 25px -5px rgb(0 0 0/8%), 0 3px 10px -6px rgba(0,0,0,.1)",
+        }}
+      >
+        <CardContent>
+          <section className="flex flex-col gap-8 pt-6">
+            <div className="relative aspect-video overflow-hidden rounded-lg">
+              <div
+                className="absolute inset-0 bg-gray-200 animate-pulse grid place-items-center"
+                aria-hidden
+              >
+                Generating OG image...
+              </div>
+              <Image
+                key={`/image?${new URLSearchParams(searchParams).toString()}`}
+                src={`/image?${new URLSearchParams(searchParams).toString()}`}
+                alt={`A example of a Figma design being used as a OG image.`}
+                fill
+              />
+            </div>
 
-        <Form searchParams={searchParams} />
-      </section>
+            <Form searchParams={searchParams} />
+          </section>
+        </CardContent>
+      </Card>
 
       <section className=" text-gray-700">
         <h2 className="text-2xl font-semibold text-gray-800 mt-12 mb-4">
@@ -50,6 +67,19 @@ export default function Home({
           <span className="code">experimental_FigmaImageResponse</span> is
           included in <span className="code">next.js</span>. You will need at
           least version <span className="code">next@14.0.5-canary.35</span>.
+        </p>
+
+        <Header>Configuration</Header>
+        <p className="">
+          Set the environment variable{" "}
+          <span className="code">FIGMA_PERSONAL_ACCESS_TOKEN</span> to your{" "}
+          <a
+            href="https://www.figma.com/developers/api#authentication"
+            className="underline"
+          >
+            Figma Personal Access Token
+          </a>
+          .
         </p>
 
         <Header>Usage</Header>
@@ -81,6 +111,14 @@ export default function Home({
               target="_blank"
             >
               Example Figma Design
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/vercel/example-figma-og-image/blob/main/src/app/image/route.tsx"
+              target="_blank"
+            >
+              Example Code
             </a>
           </li>
           <li>
