@@ -5,7 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Figma to OG Image Example",
+  title: "Figma to OG Image",
   description:
     "Create dynamic OG images for your Next.js apps without writing JSX.",
 };
