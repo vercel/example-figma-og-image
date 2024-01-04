@@ -5,7 +5,7 @@ export const runtime = "edge";
 export const alt = "Figma to OG Image";
 
 export const contentType = "image/png";
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export default async function Image() {
   const geistSemiBold = await fetch(
