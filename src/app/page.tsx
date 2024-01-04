@@ -24,8 +24,7 @@ export default function Home({
           Figma to OG Image
         </h1>
         <p>
-          Use a Figma design instead of writing JSX to generate dynamic OG
-          images for your Next.js apps.
+          Create dynamic OG images for your Next.js apps without writing JSX.
         </p>
       </hgroup>
 

@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "Figma to OG Image Example",
   description:
-    "An example Next.js application using Figma to create a dynamic OG image.",
+    "Create dynamic OG images for your Next.js apps without writing JSX.",
 };
 
 export default function RootLayout({
