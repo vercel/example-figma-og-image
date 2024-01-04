@@ -1,13 +1,6 @@
 import Image from "next/image";
 import { Form } from "@/app/form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home({
   searchParams = {
@@ -96,7 +89,11 @@ export default function Home({
 
         <Header>Usage</Header>
         <code>
-          {highlightedCode`import { ${"experimental_FigmaImageResponse"} } from ${"'next/og'"}\n\nexport default async function Image() {\n  ${"return experimental_FigmaImageResponse({"}\n    ${'url: "https://figma.com/file/...",'}\n    ${"template: {"}\n      ${`title: \"${searchParams.title}\",`}\n      ${`description: \"${searchParams.description}\"`}\n    ${"}"}\n  ${"})"}\n}`}
+          {highlightedCode`import { ${"experimental_FigmaImageResponse"} } from ${"'next/og'"}\n\nexport default async function Image() {\n  ${"return experimental_FigmaImageResponse({"}\n    ${'url: "https://figma.com/file/...",'}\n    ${"template: {"}\n      ${`title: \"${
+            searchParams.title || "A dynamic OG Image"
+          }\",`}\n      ${`description: \"${
+            searchParams.description || "Created using a few lines of code"
+          }\"`}\n    ${"}"}\n  ${"})"}\n}`}
         </code>
 
         <Header>Links</Header>
